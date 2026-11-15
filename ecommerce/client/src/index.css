@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  --color-indigo-50: #fdf2f2;
+  --color-indigo-100: #fbe0e0;
+  --color-indigo-200: #f5bcbc;
+  --color-indigo-300: #e98e8e;
+  --color-indigo-400: #d65a5a;
+  --color-indigo-500: #b83232;
+  --color-indigo-600: #8f1d1d;
+  --color-indigo-700: #7a1818;
+  --color-indigo-800: #5e1212;
+  --color-indigo-900: #450d0d;
+  --color-purple-500: #b7791f;
+  --color-purple-600: #9a6516;
+  --color-gray-50: #faf7f2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+.tamil {
+  font-family: "Noto Serif Tamil", serif;
+}
+
+.gold-line {
+  border-top: 3px solid #c9972b;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in { animation: fadeIn 0.8s ease both; }
+
+/* Scroll reveal: Reveal component class add pannum */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Moving hero gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-bg {
+  background: linear-gradient(120deg, #3d0c0c, #7a1818, #5e1212, #8f1d1d);
+  background-size: 300% 300%;
+  animation: gradientShift 14s ease infinite;
+}
+
+/* Floating soft shapes */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-22px) rotate(6deg); }
+}
+.floaty { animation: floaty 7s ease-in-out infinite; }
+
+/* Glow button */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 151, 43, 0.55); }
+  50% { box-shadow: 0 0 0 12px rgba(201, 151, 43, 0); }
+}
+.glow { animation: glow 2.4s ease-in-out infinite; }
+
+/* Shine on hover */
+.shine { position: relative; overflow: hidden; }
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+}
+.shine:hover::after { animation: shineMove 0.8s ease; }
+@keyframes shineMove {
+  to { left: 130%; }
+}
+
+/* Bounce for cart badge */
+@keyframes pop {
+  0% { transform: scale(0.4); }
+  60% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.pop { animation: pop 0.4s ease; }
+
+/* Nav link underline slide */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #8f1d1d;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Button press */
+button:active:not(:disabled) { transform: scale(0.96); }
+
+/* Section heading underline */
+.title-line { position: relative; display: inline-block; padding-bottom: 8px; }
+.title-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #c9972b, #8f1d1d);
+  transition: width 0.4s ease;
+}
+.title-line:hover::after { width: 100%; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Dark mode ---------- */
+.dark body { background-color: #1a1212; color: #ece4dc; }
+.dark .bg-white { background-color: #261b1b; }
+.dark .bg-gray-50 { background-color: #1a1212; }
+.dark .bg-gray-100 { background-color: #3a2a2a; }
+.dark .bg-gray-200 { background-color: #3a2a2a; }
+.dark .text-gray-800 { color: #ece4dc; }
+.dark .text-gray-600,
+.dark .text-gray-500 { color: #d3c7bc; }
+.dark .text-gray-400 { color: #a39588; }
+.dark .border,
+.dark .border-t,
+.dark .border-b { border-color: #4a3636; }
+.dark input,
+.dark select,
+.dark textarea { background-color: #1a1212; color: #ece4dc; }
+.dark .hover\:bg-gray-100:hover { background-color: #3a2a2a; }
+.dark .bg-indigo-50 { background-color: #3a2020; }
