@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "/api" });
+const base = import.meta.env.VITE_API_URL;
+
+const api = axios.create({
+  baseURL: base ? `${base}/api` : "/api",
+});
 
 api.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem("user") || "null");
