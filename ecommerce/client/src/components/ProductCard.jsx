@@ -42,11 +42,12 @@ export default function ProductCard({ product }) {
         {!isAdmin && (
           <button
             onClick={() => toggleWishlist(product)}
-            className="absolute right-3 top-3 translate-y-[-8px] rounded-full bg-white p-2 opacity-0 shadow transition duration-300 hover:scale-110 group-hover:translate-y-0 group-hover:opacity-100"
+            aria-label="Add to wishlist"
+            className="absolute right-3 top-3 rounded-full bg-white p-2 shadow-md transition duration-300 hover:scale-110"
           >
             <Heart
               size={18}
-              className={wished ? "text-red-500" : "text-gray-400"}
+              className={wished ? "text-red-500" : "text-gray-500"}
               fill={wished ? "currentColor" : "none"}
             />
           </button>
